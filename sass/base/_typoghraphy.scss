@@ -1,0 +1,30 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-grey-dark-2);
+}
+
+.heading-primary {
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 1.5rem 3rem;
+  @include respod(mobile) {
+    font-size: 1.8rem;
+    padding: 1.25rem 2rem;
+  }
+}
+.heading-secondary {
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+.paragraph {
+  &:not(:last-of) {
+    margin-bottom: 3rem;
+  }
+}

@@ -1,0 +1,40 @@
+.hotel-view {
+  background-color: var(--color-white);
+  flex: 1;
+}
+
+.detail {
+  font-size: 1.4rem;
+  display: flex;
+  padding: 4.5rem;
+  background-color: var(--color-grey-light-1);
+  border-bottom: var(--line);
+  @include respod(tab-port) {
+    padding: 3rem;
+  }
+  @include respod(mobile) {
+    flex-direction: column;
+  }
+}
+
+.description {
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  flex: 0 0 60%;
+  margin-right: 4.5rem;
+  @include respod(tab-port) {
+    padding: 2rem;
+    margin-right: 3rem;
+  }
+  @include respod(mobile) {
+    margin-right: 0;
+    margin-bottom: 3rem;
+  }
+}
+.user-reviews {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

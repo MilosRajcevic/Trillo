@@ -1,0 +1,253 @@
+.user-nav {
+  position: relative;
+  align-self: stretch;
+  @include flex-center;
+
+  & > *:not(:nth-child(4)):not(:nth-child(5)) {
+    //selektjemo direktno children containere
+    padding: 0 2rem;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  & > *:hover:not(:nth-child(4)):not(:nth-child(5)) {
+    background-color: var(--color-grey-light-2);
+  }
+  &__icon-box {
+    position: relative;
+
+    &:focus {
+      background-color: var(--color-grey-light-2);
+    }
+  }
+
+  &__icon {
+    height: 2.25rem;
+    width: 2.25rem;
+    fill: var(--color-grey-dark-2);
+  }
+
+  &__notification {
+    font-size: 0.8rem;
+    height: 1.75rem;
+    width: 1.75rem;
+    border-radius: 100rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    position: absolute;
+    top: 1.5rem;
+    right: 1.1rem;
+
+    @include flex-center;
+  }
+  &__user-photo {
+    height: 3.75rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+  &__user {
+    &:focus {
+      background-color: var(--color-grey-light-2);
+    }
+  }
+}
+.user-nav .user-nav__user:focus ~ .user-menu {
+  visibility: visible;
+  opacity: 1;
+}
+.user-nav .user-nav__icon-box:focus ~ .user-messages {
+  visibility: visible;
+  opacity: 1;
+}
+.user-messages,
+.user-menu {
+  position: absolute;
+  top: 6.9rem;
+  right: 0;
+  background-color: var(--color-white);
+  z-index: 1000;
+  width: 25rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--color-grey-dark-2);
+
+  padding: 1.5rem 3rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s;
+
+  @include respod(mobile) {
+    top: 4rem;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    padding: 0 1rem;
+    border-radius: 5px;
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
+    &:hover {
+      background-color: var(--color-grey-light-3);
+    }
+  }
+
+  &__link:link,
+  &__link:visited {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__link:hover,
+  &__link:active {
+    color: var(--color-grey-dark-1);
+  }
+
+  &__icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-right: 1rem;
+    line-height: 1;
+    fill: var(--color-grey-dark-2);
+  }
+}
+
+.user-messages {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__list {
+    margin-bottom: 2rem;
+  }
+
+  &__item {
+    cursor: pointer;
+  }
+  &__user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  &__name {
+    line-height: 1.4;
+    font-size: 1.6rem;
+    color: var(--color-grey-dark-1);
+  }
+  p {
+    font-size: 1.4rem;
+    overflow: hidden;
+  }
+  &__message {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+}
+
+.side-nav {
+  background-color: var(--color-grey-dark-1);
+  flex: 0 0 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__list {
+    font-size: 1.4rem;
+    list-style: none;
+    margin-top: 3.5rem;
+
+    @include respod(tab-port) {
+      display: flex;
+      margin: 0;
+    }
+  }
+
+  &__item {
+    position: relative;
+
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+      @include respod(tab-port) {
+        margin: 0;
+      }
+    }
+    @include respod(tab-port) {
+      flex: 1;
+    }
+  }
+
+  &__item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 3px;
+    background-color: var(--color-primary);
+    transform: scaleY(0);
+    transition: transform 0.2s, width 0.4s cubic-bezier(1, 0.02, 0, 1) 0.2s,
+      background-color 0.1s;
+  }
+
+  &__item:hover::before,
+  &__item--active::before {
+    transform: scaleY(1);
+    width: 100%;
+  }
+
+  &__link:link,
+  &__link:visited {
+    color: var(--color-grey-light-1);
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    padding: 1.5rem 3rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+    @include respod(tab-port) {
+      justify-content: center;
+      padding: 2rem;
+    }
+    @include respod(mobile) {
+      flex-direction: column;
+      padding: 1.5rem;
+    }
+  }
+
+  &__item:active::before {
+    background-color: var(--color-primary-light);
+  }
+
+  &__icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    fill: currentColor;
+    margin-right: 2rem;
+    @include respod(mobile) {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__legal-text {
+    font-size: 1.2rem;
+    color: var(--color-grey-light-4);
+    text-align: center;
+    padding: 2.5rem;
+    @include respod(tab-port) {
+      display: none;
+    }
+  }
+}
